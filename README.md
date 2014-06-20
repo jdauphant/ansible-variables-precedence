@@ -3,7 +3,7 @@ ansible-variables-precedence
 
 Example to understand variables precedence of Ansible
 
-Where can you defined a variable :
+# Where can you defined a variable :
 - Loaded from a file with "vars_files: ['vars.yml']"
 - In an inventory file for an host : "localhost myvar=value"
 - In an inventory file for a group : "[europe:vars]\n myvar=value"
@@ -17,10 +17,32 @@ Where can you defined a variable :
 - With "vars" keyword : "vars:\n - myvar: value"
 
 
-Launch test :
+# Launch test :
     ansible-playbook -i prod/ansible_hosts example.yml
 
-Result :
+# What I have do ?
+- I have create a variable everywhere defined everywhere (see the first commit)
+- I have rename the variable "everywhere" with the most precedence at each launch
+
+# Result in the order :
+- vars.yml
+- 'include' in example.yml
+- 'vars' in included.yml
+- 'vars' in example.yml
+- localhost, a french production server in prod/ansible_hosts
+- a french server production in prod/ansible_hosts
+- a european server production in prod/ansible_hosts
+- a server production in prod/ansible_hosts
+- host_vars/localhost
+- groups_var/france
+- groups_var/europe
+- groups_var/all
+- prod/host_vars/localhost
+- prod/groups_var/france
+- prod/groups_var/europe
+- prod/groups_var/all
+
+# Playbook result :
 ```
 PLAY [all] ******************************************************************** 
 
@@ -111,20 +133,6 @@ PLAY RECAP ********************************************************************
 localhost                  : ok=17   changed=0    unreachable=0    failed=0   
 ```
 
-More lisible result :
-- vars.yml
-- 'include' in example.yml
-- 'vars' in included.yml
-- 'vars' in example.yml
-- localhost, a french production server in prod/ansible_hosts
-- a french server production in prod/ansible_hosts
-- a european server production in prod/ansible_hosts
-- a server production in prod/ansible_hosts
-- host_vars/localhost
-- groups_var/france
-- groups_var/europe
-- groups_var/all
-- prod/host_vars/localhost
-- prod/groups_var/france
-- prod/groups_var/europe
-- prod/groups_var/all
+# What is missing :
+- Facts
+- Roles variables
