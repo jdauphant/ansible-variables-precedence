@@ -1,4 +1,4 @@
 ---
   - vars:
-     - everywhere: "I am everywhere defined with 'vars' in example.yml"
-    include: included.yml everywhere="I am everywhere defined during 'include' in example.yml"
+     - priority4: "I am everywhere defined with 'vars' in example.yml"
+    include: included.yml priority2="I am priority2 defined during 'include' in example.yml"

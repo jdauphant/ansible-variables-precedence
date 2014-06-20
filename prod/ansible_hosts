@@ -1,14 +1,14 @@
 [france]
-localhost everywhere="I am everywhere defined for localhost, a french production server in prod/ansible_hosts"
+localhost priority5="I am everywhere defined for localhost, a french production server in prod/ansible_hosts"
 
 [europe:children]
 france
 
 [france:vars]
-everywhere="I am everywhere defined for a french server production in prod/ansible_hosts"
+priority6="I am everywhere defined for a french server production in prod/ansible_hosts"
 
 [europe:vars]
-everywhere="I am everywhere defined for a european server production in prod/ansible_hosts"
+priority7="I am everywhere defined for a european server production in prod/ansible_hosts"
 
 [all:vars]
-everywhere="I am everywhere defined for a server production in prod/ansible_hosts"
+priority8="I am everywhere defined for a server production in prod/ansible_hosts"
