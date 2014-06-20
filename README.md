@@ -18,7 +18,7 @@ Where can you defined a variable :
 
 
 Launch test :
-ansible-playbook -i prod/ansible_hosts example.yml
+    ansible-playbook -i prod/ansible_hosts example.yml
 
 Result :
 ```
@@ -111,7 +111,7 @@ PLAY RECAP ********************************************************************
 localhost                  : ok=17   changed=0    unreachable=0    failed=0   
 ```
 
-More lisible :
+More lisible result :
 - vars.yml
 - 'include' in example.yml
 - 'vars' in included.yml
