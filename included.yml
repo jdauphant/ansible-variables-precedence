@@ -1,0 +1,10 @@
+---
+ - hosts: all
+   connection: local
+   vars:
+     - everywhere: "I am everywhere defined with 'vars' in included.yml"
+   vars_files:
+     - vars.yml
+   tasks:
+    - name: "Who is the everywhere variable ?"
+      debug: msg="everywhere say = {{everywhere}}"
